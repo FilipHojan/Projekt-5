@@ -30,7 +30,7 @@ namespace nukleotydy1
             Stream myStream = null;
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
 
-            openFileDialog1.Filter = "txt files (.txt)|.txt|All files (.)|*.*";
+            openFileDialog1.Filter = "txt files (.txt)|*.txt|All files (.)|*.*";
 
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
