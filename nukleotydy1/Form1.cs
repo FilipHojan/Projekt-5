@@ -53,7 +53,21 @@ namespace nukleotydy1
 
         private void button2_Click(object sender, EventArgs e)
         {
+            string sekwencja = richTextBox1.Text;
+            for(int i = 0; i < sekwencja.Length; i++)
+            {
+                
+                for (int z = 0; i < sekwencja.Length; i++)
+                {
+                    for (int x = 0; i < sekwencja.Length; i++)
+                    {
+                        for (int y = 0; i < sekwencja.Length; i++)
+                        {
 
+                        }
+                    }
+                }
+            }
         }
 
         private void richTextBox1_TextChanged(object sender, EventArgs e)
