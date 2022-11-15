@@ -53,20 +53,56 @@ namespace nukleotydy1
 
         private void button2_Click(object sender, EventArgs e)
         {
-            string sekwencja = richTextBox1.Text;
-            for(int i = 0; i < sekwencja.Length; i++)
+            List<string> listString = new List<string>();
+            List<Int16> listInt = new List<Int16>();
+            Regex regex = new Regex(@"[^ACTG]+");
+            MatchCollection matches = regex.Matches(richTextBox1.Text);
+            if (matches.Count > 0)
             {
-                
-                for (int z = 0; i < sekwencja.Length; i++)
+                MessageBox.Show("Błąd, wczystany plik zawiera nieobsługiwane znaki. Proszę naprawić plik i spróbować jeszcze raz");
+                richTextBox1.Text = String.Empty;
+            }
+            else
+            {
+                string tmp = "";
+                int z = 0;
+                int y = 0;
+                int k = 0;
+                string sekwencja = richTextBox1.Text;
+                for (int i = 0; i < ((sekwencja.Length) - 3); i++)
                 {
-                    for (int x = 0; i < sekwencja.Length; i++)
-                    {
-                        for (int y = 0; i < sekwencja.Length; i++)
-                        {
+                    z = i + 1;
+                    y = i + 2;
+                    k = i + 3;
 
-                        }
+                    tmp += sekwencja[i];
+                    tmp += sekwencja[z];
+                    tmp += sekwencja[y];
+                    tmp += sekwencja[k];
+
+                    if (listString.Contains(tmp))
+                    {
+                        int m = listString.IndexOf(tmp);
+                        listInt[m] += 1;
                     }
+                    else
+                    {
+                        listString.Add(tmp);
+                        listInt.Add(1);
+                    }
+
+                    tmp = "";
+
+
+                    listInt.Sort();
+
                 }
+                string result = "Sekwencja         Ilość\r\n";
+                for (int i = 0; i < listInt.Count; i++)
+                {
+                    result += String.Format("{0}                 {1}\r\n", listString[i].ToString(), listInt[i].ToString());
+                }
+                richTextBox2.Text = result;
             }
         }
 
